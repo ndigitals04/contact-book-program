@@ -7,7 +7,7 @@ class Contact:
 
     def __init__(self,contacts, name, phone, email=None, address=None):
         self.contacts = contacts
-        self.name = name
+        self.name = name.lower()
         self.phone = phone
         self.email = email
         self.address = address
