@@ -38,14 +38,16 @@ class Contact:
         
         return ("success", search_results) if search_results else ("not found", "No contacts found.")
 
-
-    def delete(self,contacts, name):
+    def find_by_name(self,contacts,name):
         contact_names = []
         for contact_name in contacts.keys():
             contact_names.append(contact_name)
         if name.lower() not in contact_names:
             return ("error", "Contact not found.", contacts)
         else:
+            return ("success", contacts[name.lower()], contacts)
+
+    def delete(self,contacts, name):
             contacts.pop(name)
             return ("success", f"Contact {name} deleted successfully.", contacts)
 
