@@ -31,9 +31,16 @@ contacts = readContactsFile()
 # else:
 #     print(test[1])
 
-search_result = Contact.view(None,contacts, "Pet")
-if search_result[0] == "success":
-    for contact in search_result[1]:
-        print(f"Name: {contact[0]}, Phone: {contact[1]}, Email: {contact[2]}, Address: {contact[3]}")
+# search_result = Contact.view(None,contacts, "Pet")
+# if search_result[0] == "success":
+#     for contact in search_result[1]:
+#         print(f"Name: {contact[0]}, Phone: {contact[1]}, Email: {contact[2]}, Address: {contact[3]}")
+# else:
+#     print(search_result[1])
+
+response = Contact.delete(None,contacts, "James")
+if response[0] == "success":
+    saveContactsFile(response[2])
+    print(response[1])
 else:
-    print(search_result[1])
+    print("Error finding contact to delete.")

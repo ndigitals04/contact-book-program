@@ -41,7 +41,7 @@ class Contact:
 
     def delete(self,contacts, name):
         contacts.pop(name)
-        return ("success", f"Contact {name} deleted successfully.")
+        return ("success", f"Contact {name} deleted successfully.", contacts)
 
 
 
