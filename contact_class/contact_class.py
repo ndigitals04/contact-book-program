@@ -1,6 +1,14 @@
 class Contact:   
 
     def __init__(self,contacts, name, phone, email=None, address=None):
+        self.contacts = contacts
+        self.name = name
+        self.phone = phone
+        self.email = email
+        self.address = address
+    
+
+    def create(self, contacts, name, phone, email=None, address=None):    
         contact_names = []
         for contact_name in contacts.keys():
             contact_names.append(contact_name)
