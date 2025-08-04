@@ -8,9 +8,9 @@ contacts_file_location = "C:/Users/NEW USER/Documents/python/contact-book/contac
 def instructions():
     print("Welcome to the Contact Book Application!")
     print("Please follow the instructions below for best results")
-    print("- To create a new contact, type 'create")
+    print("- To create a new contact, type 'create'")
     print("- To view contacts or search for one, type 'view'")
-    print("- To delete a contact, type 'delete' or search for the contact using 'view' and then follow the proceeding instructions to delete")
+    print("- To delete a contact, type 'delete' you can search for the contact's name using 'view'command")
     print("- To exit the application, type 'exit'")
     print("You can also type 'help' to see these instructions again.")
 
@@ -41,7 +41,13 @@ def readInput():
                 print(search_results[1])
             
         elif user_input.lower() == 'delete':
-            name = input("Enter the name of the contact to delete: ")
+            name = input("Enter the name of the contact to delete(" \
+            "you can use 'view' command to check the correct name): ")
+            return ("delete",name)
+            
+
+        else:
+            print("Invalid command. Please try again or type 'help' for instructions.")
             
 
 def readContactsFile():
@@ -62,23 +68,41 @@ def saveContactsFile(contacts):
     with file.open("w") as file:
         file.write(str(contacts))
 
+def main():
+    user_input = readInput()
+    if user_input[0] == "create":
+        contact = Contact(contacts, user_input[1]["name"], user_input[1]["phone"], 
+                          user_input[1]["email"], user_input[1]["address"])
+        response = contact.create()
+        if response[0] == "success":
+            saveContactsFile(response[2])
+            print(response[1])
+        else:
+            print(response[1])
+    elif user_input[0]== "delete":
+        response = Contact.find_by_name(None,contacts, user_input[1])
+        if response[0]== "error":
+            print(response[1])
+        else:
+            while True:
+                print(f"Are you sure you want to delete the contact '{user_input[1]}'? (yes/no)")
+                confirmation = input().lower()
+                if confirmation == 'yes':
+                    response = Contact.delete(None,contacts, user_input[1])
+                    if response[0] == "success":
+                        saveContactsFile(response[2])
+                        print(response[1])
+                    else:
+                        print(response[1])
+                    break
+                elif confirmation == 'no':
+                    print("Deletion cancelled.")
+                    break
+                else:
+                    print("Invalid input. Please type 'yes' or 'no'.")
+        
+    main() # Recursively call main to continue the loop
+
 contacts = readContactsFile()
-
-# test = Contact(contacts,name="James",phone="090880234668")
-# test = test.create()
-# if test[0] == "success":
-#     contacts = test[2]
-#     saveContactsFile(contacts)
-#     print(test[1])
-# else:
-#     print(test[1])
-
-
-
-
-response = Contact.delete(None,contacts, "James")
-if response[0] == "success":
-    saveContactsFile(response[2])
-    print(response[1])
-else:
-    print(response[1])
+instructions()
+main()
