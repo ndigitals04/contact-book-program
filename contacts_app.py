@@ -1,9 +1,9 @@
-from .contact_class import Contact
+from contact_class.contact_class import Contact
 from pathlib import Path
 import ast
+#
 
-contacts = readContactsFile()
-test = Contact("Peter Ndukwe",)
+# test = Contact("Peter Ndukwe",)
 
 def readContactsFile():
     file = Path("C:/Users/NEW USER/Documents/python/contact-book/contacts.txt")
@@ -17,3 +17,5 @@ def readContactsFile():
         with open(file, "r") as contacts_file:
             file_text = contacts_file.read()
             return ast.literal_eval(file_text)
+        
+contacts = readContactsFile()
