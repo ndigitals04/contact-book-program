@@ -24,7 +24,7 @@ class Contact:
         if self.name in contact_names:
             return ("error","Contact with this name already exists.")
         self.contacts[self.name] = {"phone": self.phone, "email": self.email, "address": self.address}
-        return ("success", f"Contact {self.name} created successfully.")
+        return ("success", f"Contact {self.name} created successfully.", self.contacts)
 
     def view(self,contacts,name_or_phone):
         search_results = []
