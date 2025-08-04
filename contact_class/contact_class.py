@@ -1,4 +1,9 @@
 class Contact:   
+    contacts = {}
+    name = ""
+    phone = ""
+    email = None
+    address = None
 
     def __init__(self,contacts, name, phone, email=None, address=None):
         self.contacts = contacts
@@ -8,18 +13,18 @@ class Contact:
         self.address = address
     
 
-    def create(self, contacts, name, phone, email=None, address=None):    
+    def create(self):    
         contact_names = []
-        for contact_name in contacts.keys():
+        for contact_name in self.contacts.keys():
             contact_names.append(contact_name)
         try:
-            int(phone) # Ensure phone is numeric
+            int(self.phone) # Ensure phone is numeric
         except ValueError:
             return ("error", "Invalid phone number format.")
-        if name in contact_names:
+        if self.name in contact_names:
             return ("error","Contact with this name already exists.")
-        contacts[name] = {"phone": phone, "email": email, "address": address}
-        return ("success", f"Contact {name} created successfully.")
+        self.contacts[self.name] = {"phone": self.phone, "email": self.email, "address": self.address}
+        return ("success", f"Contact {self.name} created successfully.")
 
     def view(self,contacts,name_or_phone):
         search_results = []
