@@ -1,11 +1,9 @@
-class Contact:
-    contacts= {}
-    contact_names = []
-    for contact_name in contacts.keys():
-        contact_names.append(contact_name)
-    
+class Contact:   
 
-    def __init__(self, name, phone, email=None, address=None):
+    def __init__(self,contacts, name, phone, email=None, address=None):
+        contact_names = []
+        for contact_name in contacts.keys():
+            contact_names.append(contact_name)
         try:
             int(phone) # Ensure phone is numeric
         except ValueError:
@@ -15,7 +13,7 @@ class Contact:
         contacts[name] = {"phone": phone, "email": email, "address": address}
         return ("success", f"Contact {name} created successfully.")
 
-    def view(self,name_or_phone):
+    def view(self,contacts,name_or_phone):
         search_results = []
         for name,value in contacts.items():
             if name_or_phone.isdigit():
@@ -28,7 +26,7 @@ class Contact:
         return ("success", search_results) if search_results else ("not found", "No contacts found.")
 
 
-    def delete(self, name):
+    def delete(self,contacts, name):
         contacts.pop(name)
         return ("success", f"Contact {name} deleted successfully.")
 
