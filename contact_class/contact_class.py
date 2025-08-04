@@ -1,7 +1,7 @@
 class Contact:
     contacts= {}
     contact_names = []
-    for contact_name in contacts.keys:
+    for contact_name in contacts.keys():
         contact_names.append(contact_name)
     
 
