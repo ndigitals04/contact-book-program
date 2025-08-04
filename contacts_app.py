@@ -81,4 +81,4 @@ if response[0] == "success":
     saveContactsFile(response[2])
     print(response[1])
 else:
-    print("Error finding contact to delete.")
+    print(response[1])

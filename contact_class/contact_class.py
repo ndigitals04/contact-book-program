@@ -40,8 +40,14 @@ class Contact:
 
 
     def delete(self,contacts, name):
-        contacts.pop(name)
-        return ("success", f"Contact {name} deleted successfully.", contacts)
+        contact_names = []
+        for contact_name in contacts.keys():
+            contact_names.append(contact_name)
+        if name.lower() not in contact_names:
+            return ("error", "Contact not found.", contacts)
+        else:
+            contacts.pop(name)
+            return ("success", f"Contact {name} deleted successfully.", contacts)
 
 
 
