@@ -28,5 +28,5 @@ python contacts_app.py
 [![Thumbnail](./contact-book-thumbnail.png)](https://youtu.be/xDRBwOnMGw0)
 
 ## 📞Contact
-Feel free to reach me on [X](x.com/Ndigitals001) for collaboration or inquiry.
+Feel free to reach me on [X](https://x.com/Ndigitals001) for collaboration or inquiry.
 
