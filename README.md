@@ -25,7 +25,7 @@ python contacts_app.py
 - Use `exit` to close the program
 
 ## ▶️Live Demo
-![[Thumbnail](./contact-book-thumbnail.png)](https://youtu.be/xDRBwOnMGw0)
+[![Thumbnail](./contact-book-thumbnail.png)](https://youtu.be/xDRBwOnMGw0)
 
 ## 📞Contact
 Feel free to reach me on [X](x.com/Ndigitals001) for collaboration or inquiry.
